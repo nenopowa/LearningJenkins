@@ -26,6 +26,6 @@ pipeline{
 }
 
 def javaver(String version){
-  bat "${javapath}\\java.exe -version"
+  bat """ "${javapath}\\java.exe" -version"""
   echo version
 }
