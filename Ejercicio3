@@ -33,10 +33,9 @@ pipeline{
   }
 }
 def SalarioNeto(Integer a){
-  if (a >= 1000){
-    def neto = a * 0.8
-  } else {
-    def neto = a
+  def neto = a
+  if (neto >= 1000){
+    neto = neto * 0.8
   }
   echo "Salario neto basado en el bruto vigente: ${neto}"
 }
