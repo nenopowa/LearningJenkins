@@ -13,7 +13,7 @@ pipeline{
             BUILD_TRIGGER_BY = "${currentBuild.getBuildCauses()[0].shortDescription} / ${currentBuild.getBuildCauses()[0].userId}"
             echo "BUILD_TRIGGER_BY: ${BUILD_TRIGGER_BY}"
             
-            println "Version de java instalada en el equipo:"
+            println "Version de java en uso:"
             javaver(javapath)
           } else {
             println "Hora antes de las 12, saltamos ejecucion"
