@@ -1,6 +1,4 @@
 def hora = new Date()
-def userid = env.BUILD_USER_ID
-def user = env.BUILD_USER
 
 pipeline{
   agent any
@@ -9,19 +7,17 @@ pipeline{
       steps{
         println "Son las: ${hora}."
         script{
-          def dateStr1 = 'Tue Feb 28 16:23:20 2017 -0600'
-          def dateStr2 = 'Tue Feb 28 17:24:06 EST 2017'
-          def pattern1 = "EEE MMM dd HH:mm:ss yyyy Z"
-          def pattern2 = "EEE MMM dd HH:mm:ss z yyyy"
-          def date = new Date().parse(pattern1, dateStr1)
-          def executeDate = new Date().parse(pattern2, dateStr2)
-          assert date < executeDate, 'Execute Date is earlier than the date'
-        
+
           def a = 13
           if (a > 12){
             println "Hora despues de las 12, se ejecuta stage"
             BUILD_TRIGGER_BY = "${currentBuild.getBuildCauses()[0].shortDescription} / ${currentBuild.getBuildCauses()[0].userId}"
             echo "BUILD_TRIGGER_BY: ${BUILD_TRIGGER_BY}"
+            wrap([$class: 'BuildUser']) {
+              USER = "${BUILD_USER}"
+              USER_ID = "${BUILD_USER_ID}"
+            }
+            echo "BUILD_TRIGGER_BY: ${BUILD_USER} / ${BUILD_USER_ID}"
             println "Version de java instalada en el equipo:"
             javaver('Output')
           } else {
