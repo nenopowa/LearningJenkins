@@ -5,25 +5,25 @@ pipeline{
   stages{
     stage("Clima"){
       steps{
-        println "La climatología actual en Vitoria-Gasteiz es: ${clima}"
+        println "La climatologia actual en Vitoria-Gasteiz es: ${clima}"
       }
     }
     stage("Poblacion"){
       steps{
-        println "Actualmente Vitoria-Gasteiz tiene una población de: ${poblacion} habitantes"
+        println "Actualmente Vitoria-Gasteiz tiene una poblacion de: ${poblacion} habitantes"
       }
     }
     stage("PobNeta"){
       steps{
         script{
-          PoblacionNeta('Output')
+          PoblacionNeta(poblacion)
         }
       }
     }
   }
 }
-def PoblacionNeta(String a)
+def PoblacionNeta(Int a)
 {
-  def neta = poblacion / 2
+  def neta = a / 2
   echo "Poblacion neta actual: ${neta}"
 }
