@@ -1,5 +1,4 @@
 def df = "HH:mm:ss"
-def mediodia = new Date().parse(df, "12:00:00")
 def hora = new Date()
 
 pipeline{
@@ -7,7 +6,11 @@ pipeline{
   stages{
     stage("Hora"){
       steps{
-        println "Son las: ${hora}. Y voy a comparar con ${mediodia}"
+        println "Son las: ${hora}."
+        script{
+          def mediodia = new Date().parse(df, "12:00:00")
+          println mediodia
+        }
       }
     }
   }
