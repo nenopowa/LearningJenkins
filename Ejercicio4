@@ -8,10 +8,20 @@ pipeline{
       steps{
         println "Son las: ${hora}."
         script{
-          def mediodia = new Date().parse(df, "12:00:00")
-          println mediodia
+          def a = 13
+          if (a > 12){
+            println "Hora despues de las 12, se ejecuta stage"
+            javaver('Output')
+          } else {
+            println "Hora antes de las 12, saltamos ejecucion"
+          }
         }
       }
     }
   }
+}
+
+def javaver(String version){
+  bat "java -version"
+  echo version
 }
