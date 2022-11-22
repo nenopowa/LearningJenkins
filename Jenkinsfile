@@ -1,5 +1,5 @@
 def clima = "Hay tormenta"
-del poblacion = 250000
+def poblacion = 250000
 pipeline{
   agent any
   stages{
