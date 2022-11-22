@@ -1,1 +1,41 @@
-#Ejercicio4
+def pelis = ["El senyor de los anillos","Back to the future","Ready Player One","El Hobbit","Harry Potter"] as String[]
+def comida = "Tortilla de patatas"
+def zodiaco = "Virgo"
+def puesto = "Operador de desarrollo"
+def salario = 666666
+
+pipeline{
+  agent any
+  stages{
+    stage("Peliculas"){
+      steps{
+        println "Top 5 de pelis favoritas: ${pelis.sort()}."
+      }
+    }
+    stage("comida"){
+      steps{
+        println "Comida favorita: ${comida}."
+      }
+    }
+    stage("zodiaco"){
+      steps{
+        println "Signo zodiacal: ${zodiaco}."
+      }
+    }
+    stage("trabajo"){
+      steps{
+        println "Puesto actual de trabajo: ${puesto}, cobrando la ingente y obscena cantidad de ${salario} Euros brutos."
+        script{
+          SalarioNeto(salario)
+        }
+      }
+    }
+  }
+}
+def SalarioNeto(Integer a){
+  def neto = a
+  if (neto >= 1000){
+    neto = neto * 0.8
+  }
+  echo "Salario neto basado en el bruto vigente: ${neto}"
+}
