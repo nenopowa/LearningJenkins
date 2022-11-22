@@ -1,6 +1,6 @@
 def df = "HH:mm:ss"
 def mediodia = New Date().parse(df, "12:00:00")
-def hora = New Date()
+def hora = new Date()
 
 pipeline{
   agent any
