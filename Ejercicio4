@@ -9,10 +9,11 @@ pipeline{
     stage("Hora"){
       steps{
         println "Son las: ${hora}."
-        println SV(now.hour, now.minute, now.second)
-        (H, M, S) = now[HOUR_OF_DAY, MINUTE_OF_HOUR, SECOND_OF_MINUTE]
-        printf 'The time is %02d:%02d:%02d\n', H, M, S
         script{
+          println SV(now.hour, now.minute, now.second)
+          (H, M, S) = now[HOUR_OF_DAY, MINUTE_OF_HOUR, SECOND_OF_MINUTE]
+          printf 'The time is %02d:%02d:%02d\n', H, M, S
+        
           def a = 13
           if (a > 12){
             println "Hora despues de las 12, se ejecuta stage"
