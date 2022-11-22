@@ -13,7 +13,8 @@ pipeline{
           def a = 13
           if (a > 12){
             println "Hora despues de las 12, se ejecuta stage"
-            println "Usuario que ejecuta el proceso: ${user} . ID: ${userid}"
+            BUILD_TRIGGER_BY = "${currentBuild.getBuildCauses()[0].shortDescription} / ${currentBuild.getBuildCauses()[0].userId}"
+            echo "BUILD_TRIGGER_BY: ${BUILD_TRIGGER_BY}"
             println "Version de java instalada en el equipo:"
             javaver('Output')
           } else {
