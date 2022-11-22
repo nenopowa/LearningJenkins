@@ -9,9 +9,13 @@ pipeline{
       steps{
         println "Son las: ${hora}."
         script{
-          (H, M, S) = now[HOUR_OF_DAY, MINUTE, SECOND]
-          println SV(H, M, S)
-          printf 'The time is %02d:%02d:%02d%n', H, M, S
+          def dateStr1 = 'Tue Feb 28 16:23:20 2017 -0600'
+          def dateStr2 = 'Tue Feb 28 17:24:06 EST 2017'
+          def pattern1 = "EEE MMM dd HH:mm:ss yyyy Z"
+          def pattern2 = "EEE MMM dd HH:mm:ss z yyyy"
+          def date = new Date().parse(pattern1, dateStr1)
+          def executeDate = new Date().parse(pattern2, dateStr2)
+          assert date < executeDate, 'Execute Date is earlier than the date'
         
           def a = 13
           if (a > 12){
