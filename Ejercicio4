@@ -1,5 +1,7 @@
 def df = "HH:mm:ss"
 def hora = new Date()
+def userid = env.BUILD_USER_ID
+def userid = env.BUILD_USER
 
 pipeline{
   agent any
@@ -11,7 +13,7 @@ pipeline{
           def a = 13
           if (a > 12){
             println "Hora despues de las 12, se ejecuta stage"
-            println "Usuario que ejecuta el proceso: $BUILD_USER . ID: $BUILD_USER_ID"
+            println "Usuario que ejecuta el proceso: ${user} . ID: ${userid}"
             println "Version de java instalada en el equipo:"
             javaver('Output')
           } else {
