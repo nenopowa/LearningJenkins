@@ -9,10 +9,9 @@ pipeline{
       steps{
         println "Son las: ${hora}."
         script{
-          now = LocalTime.now() // or LocalDateTime
-          println SV(now.hour, now.minute, now.second)
-          (H, M, S) = now[HOUR_OF_DAY, MINUTE_OF_HOUR, SECOND_OF_MINUTE]
-          printf 'The time is %02d:%02d:%02d\n', H, M, S
+          (H, M, S) = now[HOUR_OF_DAY, MINUTE, SECOND]
+          println SV(H, M, S)
+          printf 'The time is %02d:%02d:%02d%n', H, M, S
         
           def a = 13
           if (a > 12){
