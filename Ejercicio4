@@ -1,5 +1,5 @@
 def hora = new Date()
-
+def javapath = "C:\\Users\\neno.DESKTOP-HFP790G\\Downloads\\jdk-17.0.5\\bin"
 pipeline{
   agent any
   stages{
@@ -13,11 +13,7 @@ pipeline{
             println "Hora despues de las 12, se ejecuta stage"
             BUILD_TRIGGER_BY = "${currentBuild.getBuildCauses()[0].shortDescription} / ${currentBuild.getBuildCauses()[0].userId}"
             echo "BUILD_TRIGGER_BY: ${BUILD_TRIGGER_BY}"
-            wrap([$class: 'BuildUser']) {
-              USER = "${BUILD_USER}"
-              USER_ID = "${BUILD_USER_ID}"
-            }
-            echo "BUILD_TRIGGER_BY: ${BUILD_USER} / ${BUILD_USER_ID}"
+            
             println "Version de java instalada en el equipo:"
             javaver('Output')
           } else {
@@ -30,6 +26,6 @@ pipeline{
 }
 
 def javaver(String version){
-  bat "java -version"
+  bat "${javapath}\\java.exe -version"
   echo version
 }
