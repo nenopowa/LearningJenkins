@@ -1,5 +1,5 @@
 def df = "HH:mm:ss"
-def mediodia = New Date().parse(df, "12:00:00")
+def mediodia = new Date().parse(df, "12:00:00")
 def hora = new Date()
 
 pipeline{
