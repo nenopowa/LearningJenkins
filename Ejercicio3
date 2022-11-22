@@ -1,4 +1,4 @@
-def pelis = ["El señor de los anillos","Back to the future","Ready Player One","El Hobbit","Harry Potter"] as String[]
+def pelis = ["El senyor de los anillos","Back to the future","Ready Player One","El Hobbit","Harry Potter"] as String[]
 def comida = "Tortilla de patatas"
 def zodiaco = "Virgo"
 def puesto = "Operador de desarrollo"
@@ -24,7 +24,7 @@ pipeline{
     }
     stage("trabajo"){
       steps{
-        println "Puesto actual de trabajo: ${puesto}, cobrando la ingente y obscena cantidad de ${salario}€ brutos."
+        println "Puesto actual de trabajo: ${puesto}, cobrando la ingente y obscena cantidad de ${salario} Euros brutos."
         script{
           SalarioNeto(salario)
         }
@@ -32,12 +32,11 @@ pipeline{
     }
   }
 }
-def SalarioNeto(Integer a)
-{
+def SalarioNeto(Integer a){
   if (a >= 1000){
     def neto = a * 0.8
   } else {
     def neto = a
   }
-  return "Salario neto basado en el bruto vigente: ${neto}"
+  echo "Salario neto basado en el bruto vigente: ${neto}"
 }
