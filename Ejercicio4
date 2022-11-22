@@ -1,21 +1,20 @@
-def hora = new Date()
+def fecha = new Date()
+def hora = fecha.format("HH").toInteger()
 def javapath = "C:\\Users\\neno.DESKTOP-HFP790G\\Downloads\\jdk-17.0.5\\bin"
 pipeline{
   agent any
   stages{
     stage("Hora"){
       steps{
-        println "Son las: ${hora}."
+        println "Fecha: ${fecha}."
         script{
-
-          def a = 13
-          if (a > 12){
+          if (hora > 12){
             println "Hora despues de las 12, se ejecuta stage"
             BUILD_TRIGGER_BY = "${currentBuild.getBuildCauses()[0].shortDescription} / ${currentBuild.getBuildCauses()[0].userId}"
             echo "BUILD_TRIGGER_BY: ${BUILD_TRIGGER_BY}"
             
             println "Version de java instalada en el equipo:"
-            javaver('Output')
+            javaver(javapath)
           } else {
             println "Hora antes de las 12, saltamos ejecucion"
           }
@@ -25,7 +24,7 @@ pipeline{
   }
 }
 
-def javaver(String version){
+def javaver(String javapath){
   bat """ "${javapath}\\java.exe" -version"""
   echo version
 }
