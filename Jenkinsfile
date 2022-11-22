@@ -22,7 +22,7 @@ pipeline{
     }
   }
 }
-def PoblacionNeta(integer a)
+def PoblacionNeta(Integer a)
 {
   def neta = a / 2
   echo "Poblacion neta actual: ${neta}"
