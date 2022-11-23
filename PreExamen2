@@ -1,3 +1,4 @@
+def fecha = new Date()
 def hora = fecha.format("HH:mm")
 pipeline{
   agent any
