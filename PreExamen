@@ -19,24 +19,24 @@ pipeline {
                   switch(dia) {
                     case 3:
                       println "Hoy es lunes, el clima hoy es nuboso con posibilidad de precipitacion"
-                      break
+                    //  break
                     //case 2:
                       def num1 = 150
                       def num2 = 350
                       def suma = num1 + num2
                       println "Hoy, martes, nos toca mates. Sumaremos ${num1} y ${num2}. La suma es: ${suma} "
-                      break
+                     // break
                     //case 3:
                       def pi = Math.PI
                       println "Como buen miercoles, aprenderemos trigonometria. Para ello, conocer el valor de PI es muy importante. El valor es: ${pi} "
-                      break
+                     // break
                     //case 4:
                       println "Hoy Jueves, toca decirte quien toca cosas, que es el usuario: ${currentBuild.getBuildCauses()[0].userId}"
-                      break
+                     // break
                     //case 5:
                       println "Viernes, no touch day, hoy solo revisamos la version instalada de Java. Que no tiene por que ser la misma que corre Jenkins... La version es: "
                       bat "java -version"
-                      break
+                      //break
                     //case [6,7]:  
                       println "Estamos en finde, descansa, que haces mirando esto!"
                       break
