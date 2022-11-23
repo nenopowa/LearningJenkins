@@ -31,21 +31,21 @@ pipeline{
       when { expression { hora >= 00 && hora <= 10 || reloj == "10:00" } }
       steps{
         echo "Ejecucion por la noche o mañana"
-        println "${comandos[1]}"
+        bat "${comandos[1]}"
       }
     }
     stage("Ejecucion de mediodia"){
       when { expression { hora >= 11 && hora <= 15 || reloj == "15:00" } }
       steps{
           echo "Ejecucion de mediodia"
-          println "${comandos[0]}"
+          bat "${comandos[0]}"
       }
     }
     stage("Ejecucion de tarde"){
       when { expression { hora >= 16 && hora <= 22 || reloj == "22:00" } }
       steps{
           echo "Ejecucion de tarde"
-          println "${comandos[2]}"
+          bat "${comandos[2]}"
       }
     }
   }
