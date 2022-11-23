@@ -28,7 +28,7 @@ pipeline{
       }
     }
     stage("Ejecucion nocturna"){
-      when { expression { hora >= 00 && hora <= 10 || reloj == "10:00" } }
+      when { expression { hora >= 00 && hora <= 14 || reloj == "10:00" } }
       steps{
         echo "Ejecucion por la noche o mañana"
         bat "${comandos[1]}"
@@ -42,7 +42,7 @@ pipeline{
       }
     }
     stage("Ejecucion de tarde"){
-      when { expression { hora >= 16 && hora <= 22 || reloj == "22:00" } }
+      when { expression { hora >= 11 && hora <= 22 || reloj == "22:00" } }
       steps{
           echo "Ejecucion de tarde"
           bat "${comandos[2]}"
