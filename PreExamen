@@ -27,7 +27,8 @@ pipeline {
                       println "Hoy, martes, nos toca mates. Sumaremos ${num1} y ${num2}. La suma es: ${suma} "
                       break
                     case 3:
-                      println "Como buen miercoles, aprenderemos trigonometria. Para ello, conocer el valor de ""Pi"" es muy importante. El valor es: "
+                      def pi = Math.PI as string
+                      println "Como buen miercoles, aprenderemos trigonometria. Para ello, conocer el valor de PI es muy importante. El valor es: ${pi} "
                       break
                     case 4:
                       println "Jueves"
