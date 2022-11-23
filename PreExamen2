@@ -27,13 +27,22 @@ pipeline{
       }
     }
     stage("Ejecucion nocturna"){
-      when { expression { hora >= 00 && hora <= 13 || reloj <= "10:00" } }
-        steps{
-          echo "Ejecucion por la noche o mañana"
-        }
+      when { expression { hora >= 00 && hora <= 10 || reloj <= "10:00" } }
+      steps{
+        echo "Ejecucion por la noche o mañana"
+      }
     }
     stage("Ejecucion de mediodia"){
-    
+      when { expression { hora >= 11 && hora <= 15 || reloj <= "15:00" } }
+      steps{
+          echo "Ejecucion de mediodia"
+      }
+    }
+    stage("Ejecucion de mediodia"){
+      when { expression { hora >= 16 && hora <= 22 || reloj <= "22:00" } }
+      steps{
+          echo "Ejecucion de tarde"
+      }
     }
   }
 }
