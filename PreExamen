@@ -17,7 +17,7 @@ pipeline {
                 script {
                   def dia = new Date().getDay()
                   switch(dia) {
-                    case 3:
+                    case [3,2]:
                       println "Hoy es lunes, el clima hoy es nuboso con posibilidad de precipitacion"
                     //  break
                     //case 2:
