@@ -8,7 +8,7 @@
 // - Si el día es Viernes se debe ejecutar el comando BAT que informe la version de java del computador 
 // "bat java -version"
 // - Si es sabado o domingo, no hacer nada.
-def weekday as string
+def weekday
 pipeline {
     agent any 
     stages {
