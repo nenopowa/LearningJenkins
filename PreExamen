@@ -1,0 +1,51 @@
+// EJERCICIO MODELO DE EXAMEN:
+// Desarrollar un pipeline a traves de un
+// jenkinsfile (GitHub) que en base al día de la semana en el que se encuentre realice distintas acciones.
+// - Si el día es lunes se debe informar el clima actual en tu ciudad
+// - Si el día es martes se debe informar la suma de los siguientes numeros: 150 y 350
+// - Si el día es miercoles se debe informar el numero PI por consola
+// - Si el día es jueves se debe informar que usuario ejecuto el pipeline (nombre ficticio)
+// - Si el día es Viernes se debe ejecutar el comando BAT que informe la version de java del computador 
+// "bat java -version"
+// - Si es sabado o domingo, no hacer nada.
+def weekday
+pipeline {
+    agent any 
+    stages {
+        stage("Execution by day") {
+            steps {
+                script {
+                  def dia = new Date().getDay()
+                  switch(dia) {
+                    case 1:
+                      println "Hoy es lunes, el clima hoy es nuboso con posibilidad de precipitacion"
+                      break
+                    case 2:
+                      def num1 = 150
+                      def num2 = 350
+                      def suma = num1 + num2
+                      println "Hoy, martes, nos toca mates. Sumaremos ${num1} y ${num2}. La suma es: ${suma} "
+                      break
+                    case 3:
+                      def pi = Math.PI
+                      println "Como buen miercoles, aprenderemos trigonometria. Para ello, conocer el valor de PI es muy importante. El valor es: ${pi} "
+                      break
+                    case 4:
+                      println "Hoy Jueves, toca decirte quien toca cosas, que es el usuario: ${currentBuild.getBuildCauses()[0].userId}"
+                      break
+                    case 5:
+                      println "Viernes, no touch day, hoy solo revisamos la version instalada de Java. Que no tiene por que ser la misma que corre Jenkins... La version es: "
+                      bat "java -version"
+                      break
+                    case [6,7]:  
+                      println "Estamos en finde, descansa, que haces mirando esto!"
+                      break
+                    default:
+                      println "Valor por defecto"
+                      break
+                    }
+                }
+            }
+        }
+    }
+}
