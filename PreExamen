@@ -18,10 +18,13 @@ pipeline {
                   def dia = new Date().getDay()
                   switch(dia) {
                     case 1:
-                      println "Lunes"
+                      println "Hoy es lunes, el clima hoy es nuboso con posibilidad de precipitacion"
                       break
                     case 2:
-                      println "Martes"
+                      def num1 = 150
+                      def num2 = 350
+                      def suma = num1 + num2
+                      println "Hoy, martes, nos toca mates. Sumaremos ${num1} y ${num2}. La suma es: ${suma} "
                       break
                     case 3:
                       println "Miercoles"
