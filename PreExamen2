@@ -1,12 +1,36 @@
+// Desarrollar un pipelin a traves de un
+// jenkinsfile (GitHub)e que informe la hora actual por la consola y que en base a la misma ejecute comandos a traves de la consola de windows (bat)
+// Comandos a ejecutar:
+// - 1) git --version 
+// - 2) ipconfig /flushdns
+// - 3) TIME
+
+// Franja horaria:
+// Si la franja horaria es entre las 00AM y las 10AM generar el comando 2
+// Si la franja horaria es entre las 11AM y las 3PM generar el comando 1
+// Si la franja horaria es entre las 4PM y las 10PM informar la hora del sistema 
+// Y si la franja es entre las 11PM no se realizan acciones
+
+// ENTREGABLES:
+// - Captura de pantalla de consola
+// - Link del repositorio de gitHub
+
 def fecha = new Date()
-def hora = fecha.format("HH:mm")
+def reloj = fecha.format("HH:mm")
+def hora = fecha.format("HH").ToInteger()
 pipeline{
   agent any
   stages{
     stage("Mostrar hora"){
       steps{
-        echo "Son las ${hora}"
+        echo "Son las ${reloj}"
       }
+    }
+    stage("Ejecucion nocturna"){
+      when { expression { hora >= 00 || reloj <= "10:00" } }
+        steps{
+          echo "Ejecucion por la noche o mañana"
+        }
     }
   }
 }
