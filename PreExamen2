@@ -1,0 +1,11 @@
+def hora = fecha.format("HH:mm")
+pipeline{
+  agent any
+  stages{
+    stage("Mostrar hora"){
+      steps{
+        echo "Son las ${hora}"
+      }
+    }
+  }
+}
