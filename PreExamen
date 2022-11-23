@@ -18,28 +18,27 @@ pipeline {
                   def dia = new Date().getDay()
                   switch(dia) {
                     case 1:
-                      weekday = "Lunes"
+                      println "Lunes"
                       break
                     case 2:
-                      result = "Martes"
+                      println "Martes"
                       break
                     case 3:
-                      result = "Miercoles"
+                      println "Miercoles"
                       break
                     case 4:
-                      result = "Jueves"
+                      println "Jueves"
                       break
                     case 5:
-                      result = "Viernes"
+                      println "Viernes"
                       break
                     case [6,7]:  
-                      result = "FINDE!!!"
+                      println "FINDE!!!"
                       break
                     default:
-                      result = "def"
+                      println "Valor por defecto"
                       break
                     }
-                    println weekday
                 }
             }
         }
